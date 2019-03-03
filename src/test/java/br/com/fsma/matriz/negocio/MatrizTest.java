@@ -135,6 +135,24 @@ class MatrizTest {
 
 	}
 	
+	@Test 
+	void deveRetornarOsValoresDosElementosDaMatrizTransposta() {
+		Matriz3x3 matriz = new Matriz(1.0f, 3.0f, -5.0f, 0.0f, -2.0f, 4.0f, 2.0f, 3.0f, 6.0f);  
+		Matriz3x3 novaMatriz = matriz.transposta();
+		
+		assertEquals(1.0, novaMatriz.getValor(0,0) );
+		assertEquals(0.0, novaMatriz.getValor(0,1) );
+		assertEquals(2.0, novaMatriz.getValor(0,2) );
+		
+		assertEquals(3.0, novaMatriz.getValor(1,0) );
+		assertEquals(-2.0, novaMatriz.getValor(1,1) );
+		assertEquals(3.0, novaMatriz.getValor(1,2) );
+		
+		assertEquals(-5.0, novaMatriz.getValor(2,0) );
+		assertEquals(4.0, novaMatriz.getValor(2,1) );
+		assertEquals(6.0, novaMatriz.getValor(2,2) );
+
+	}
 
 	@Test
 	void deveRetornarVerdadeiroSeAsMatrizesForemIguais() {
@@ -145,8 +163,23 @@ class MatrizTest {
 		boolean isIguais = matriz.isIguais(matriz2);
 		boolean isNotIguais = matriz.isIguais(matriz3);
 
-		assertEquals(true, isIguais );
-		assertEquals(false, isNotIguais );
+		assertEquals(true, isIguais);
+		assertEquals(false, isNotIguais);
+	}
+
+
+	@Test
+	void deveRetornarVerdadeiroSeAsMatrizesForemEscalar() {
+		Matriz3x3 matriz = new Matriz(1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f);  
+		assertEquals(true, matriz.isEscalar());
+	}
+	
+	
+
+	@Test
+	void deveRetornarVerdadeiroSeAsMatrizesForemDiagonais() {
+		Matriz3x3 matriz = new Matriz(0.9f, 0.0f, 0.0f, 0.0f, 4.5f, 0.0f, 0.0f, 0.0f, 8.1f);  
+		assertEquals(true, matriz.isDiagonal());
 	}
 	
 	@Test

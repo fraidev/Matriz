@@ -94,19 +94,46 @@ public class Matriz implements Matriz3x3  {
 
 	@Override
 	public Matriz3x3 transposta() {
-		// TODO Auto-generated method stub
-		return null;
+		double newNumbers[][] = new double[3][3];
+		newNumbers[0][0] = getNumbers()[0][0];
+		newNumbers[1][1] = getNumbers()[1][1];
+		newNumbers[2][2] = getNumbers()[2][2];
+
+		newNumbers[0][1] = getNumbers()[1][0];
+		newNumbers[0][2] = getNumbers()[2][0];
+		newNumbers[1][2] = getNumbers()[2][1];
+		
+		newNumbers[1][0] = getNumbers()[0][1];
+		newNumbers[2][0] = getNumbers()[0][2];
+		newNumbers[2][1] = getNumbers()[1][2];
+
+		Matriz novaMatriz = new Matriz(newNumbers[0][0], newNumbers[0][1], newNumbers[0][2],
+									   newNumbers[1][0], newNumbers[1][1], newNumbers[1][2],
+									   newNumbers[2][0], newNumbers[2][1], newNumbers[2][2]);
+		
+		return novaMatriz;
 	}
 
 	@Override
 	public boolean isEscalar() {
 		// TODO Auto-generated method stub
+		if(getNumbers()[0][0] == getNumbers()[1][1] && getNumbers()[1][1] == getNumbers()[2][2]){
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean isDiagonal() {
 		// TODO Auto-generated method stub
+		if(getNumbers()[1][0] == 0 &&
+		   getNumbers()[2][0] == 0 &&
+		   getNumbers()[2][1] == 0 &&
+		   getNumbers()[0][1] == 0 &&
+		   getNumbers()[0][2] == 0 &&
+		   getNumbers()[1][2] == 0){
+			   return true;
+		   }
 		return false;
 	}
 

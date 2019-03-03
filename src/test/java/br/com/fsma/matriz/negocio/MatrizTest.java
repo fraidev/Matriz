@@ -115,28 +115,29 @@ class MatrizTest {
 		assertEquals(matriz.getValor(2, 2) * 1.1f, novaMatriz.getValor(2,2) );
 	}
 
-	/*
-	 * // @Test // void deveRetornarOsValoresDosElementosDaMatrizInversa() { //
-	 * Matriz3x3 matriz = new Matriz(0.9f, 1.8f, 2.7f, 3.6f, 4.5f, 5.4f, 6.3f, 7.2f,
-	 * 8.1f); // // Vetor3x1 novaVetor = matriz.inversa(); // //
-	 * assertEquals(matriz.getValor(0, 0) * matriz2.getValor(0, 0),
-	 * novaMatriz.getValor(0,0) ); // assertEquals(matriz.getValor(0, 1) *
-	 * matriz2.getValor(0, 1), novaMatriz.getValor(0,1) ); //
-	 * assertEquals(matriz.getValor(0, 2) * matriz2.getValor(0, 2),
-	 * novaMatriz.getValor(0,2) ); // // assertEquals(matriz.getValor(1, 0) *
-	 * matriz2.getValor(1, 0), novaMatriz.getValor(1,0) ); //
-	 * assertEquals(matriz.getValor(1, 1) * matriz2.getValor(1, 1),
-	 * novaMatriz.getValor(1,1) ); // assertEquals(matriz.getValor(1, 2) *
-	 * matriz2.getValor(1, 2), novaMatriz.getValor(1,2) ); // //
-	 * assertEquals(matriz.getValor(2, 0) * matriz2.getValor(2, 0),
-	 * novaMatriz.getValor(2,0) ); // assertEquals(matriz.getValor(2, 1) *
-	 * matriz2.getValor(2, 1), novaMatriz.getValor(2,1) ); //
-	 * assertEquals(matriz.getValor(2, 2) * matriz2.getValor(2, 2),
-	 * novaMatriz.getValor(2,2) ); // }
-	 */
+	
+	@Test 
+	void deveRetornarOsValoresDosElementosDaMatrizInversa() {
+		Matriz3x3 matriz = new Matriz(1.0f, 2.0f, 3.0f, 0.0f, 1.0f, 4.0f, 5.0f, 6.0f, 0.0f);  
+		Matriz3x3 novaMatriz = matriz.inversa();
+		
+		assertEquals(-24.0, novaMatriz.getValor(0,0) );
+		assertEquals(18.0, novaMatriz.getValor(0,1) );
+		assertEquals(5.0, novaMatriz.getValor(0,2) );
+		
+		assertEquals(20.0, novaMatriz.getValor(1,0) );
+		assertEquals(-15.0, novaMatriz.getValor(1,1) );
+		assertEquals(-4.0, novaMatriz.getValor(1,2) );
+		
+		assertEquals(-5.0, novaMatriz.getValor(2,0) );
+		assertEquals(4.0, novaMatriz.getValor(2,1) );
+		assertEquals(1.0, novaMatriz.getValor(2,2) );
+
+	}
+	
 
 	@Test
-	void deveRetornarOsValoresDosElementosDaMatrizIguais() {
+	void deveRetornarVerdadeiroSeAsMatrizesForemIguais() {
 		Matriz3x3 matriz = new Matriz(0.9f, 1.8f, 2.7f, 3.6f, 4.5f, 5.4f, 6.3f, 7.2f, 8.1f);  
 		Matriz3x3 matriz2 = new Matriz(0.9f, 1.8f, 2.7f, 3.6f, 4.5f, 5.4f, 6.3f, 7.2f, 8.1f);  
 		Matriz3x3 matriz3 = new Matriz(1.2f, 3.2f, 1.7f, 2.1f, 2.3f, 4.4f, 7.3f, 1.2f, 2.1f);  
@@ -147,4 +148,12 @@ class MatrizTest {
 		assertEquals(true, isIguais );
 		assertEquals(false, isNotIguais );
 	}
+	
+	@Test
+	void deveRetornarODeterminanteDaMatriz() {
+		Matriz3x3 matriz = new Matriz(1.0f, 2.0f, 3.0f, 0.0f, 1.0f, 4.0f, 5.0f, 6.0f, 0.0f);  
+		double determinante = matriz.getDeterminante();
+
+		assertEquals(1, determinante);
 	}
+}

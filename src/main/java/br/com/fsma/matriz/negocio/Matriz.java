@@ -78,8 +78,18 @@ public class Matriz implements Matriz3x3  {
 
 	@Override
 	public Matriz3x3 inversa() {
-		// TODO Auto-generated method stub
-		return null;
+		double det = getDeterminante();
+		double newNumbers[][] = new double[3][3];
+		for(int i = 0; i < 3; ++i) {
+			for(int j = 0; j < 3; ++j)
+				newNumbers[i][j] = ((((getNumbers()[(j+1)%3][(i+1)%3] * getNumbers()[(j+2)%3][(i+2)%3]) - (getNumbers()[(j+1)%3][(i+2)%3] * getNumbers()[(j+2)%3][(i+1)%3]))/ det));
+		}
+
+		Matriz novaMatriz = new Matriz(newNumbers[0][0], newNumbers[0][1], newNumbers[0][2],
+									   newNumbers[1][0], newNumbers[1][1], newNumbers[1][2],
+									   newNumbers[2][0], newNumbers[2][1], newNumbers[2][2]);
+		
+		return novaMatriz;
 	}
 
 	@Override
@@ -115,8 +125,13 @@ public class Matriz implements Matriz3x3  {
 
 	@Override
 	public double getDeterminante() {
-		// TODO Auto-generated method stub
-		return 0;
+		double det = 0;
+		
+	    for(int i = 0; i < 3; i++) {
+	        det = det + (getNumbers()[0][i] * (getNumbers()[1][(i+1)%3] * getNumbers()[2][(i+2)%3] - getNumbers()[1][(i+2)%3] * getNumbers()[2][(i+1)%3]));
+	    }
+
+		return det;
 	}
 
 	@Override

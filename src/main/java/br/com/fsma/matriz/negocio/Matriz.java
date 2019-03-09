@@ -81,8 +81,9 @@ public class Matriz implements Matriz3x3  {
 		double det = getDeterminante();
 		double newNumbers[][] = new double[3][3];
 		for(int i = 0; i < 3; ++i) {
-			for(int j = 0; j < 3; ++j)
+			for(int j = 0; j < 3; ++j){
 				newNumbers[i][j] = ((((getNumbers()[(j+1)%3][(i+1)%3] * getNumbers()[(j+2)%3][(i+2)%3]) - (getNumbers()[(j+1)%3][(i+2)%3] * getNumbers()[(j+2)%3][(i+1)%3]))/ det));
+			}
 		}
 
 		Matriz novaMatriz = new Matriz(newNumbers[0][0], newNumbers[0][1], newNumbers[0][2],
